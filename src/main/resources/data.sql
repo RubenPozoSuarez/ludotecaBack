@@ -22,3 +22,15 @@ INSERT INTO CLIENT(id, name) VALUES (3, 'Rubén');
 INSERT INTO CLIENT(id, name) VALUES (4, 'Almudena');
 INSERT INTO CLIENT(id, name) VALUES (5, 'Lamberto');
 INSERT INTO CLIENT(id, name) VALUES (6, 'Daniel');
+
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (1, 1, 2, '2022-01-01', '2022-01-11');
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (2, 1, 1, '2022-02-01', '2022-02-11');
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (3, 2, 3, '2022-01-01', '2022-01-11');
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (4, 3, 3, '2022-01-01', '2022-01-11');
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (5, 4, 4, '2022-01-01', '2022-01-11');
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (6, 2, 2, '2022-03-01', '2022-03-11');
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (7, 4, 1, '2022-04-01', '2022-04-11');
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (8, 1, 3, '2021-01-01', '2021-01-11');
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (9, 1, 5, '2022-05-01', '2022-05-11');
+INSERT INTO LOAN(id, game_id, client_id, start_date, repayment_date) VALUES (10, 1, 4, '2020-01-01', '2020-01-11');
+

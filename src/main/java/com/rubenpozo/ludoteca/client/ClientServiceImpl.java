@@ -26,7 +26,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void save(Long id, ClientDto dto) {
-        Client client = new Client();;
+        Client client = new Client();
+        ;
 
         if (id != null)
             client = this.get(id);
@@ -39,6 +40,11 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void delete(Long id) {
         clientRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean existsByName(String name) {
+        return clientRepository.existsByName(name);
     }
 
 }

@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 
 import com.rubenpozo.ludoteca.author.model.AuthorDto;
-import com.rubenpozo.ludoteca.author.model.AuthorSearchDto;
+import com.rubenpozo.ludoteca.dto.PageableDto;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
@@ -61,11 +61,11 @@ public class AuthorIT {
     @Test
     public void findFirstPageWithFiveSizeShouldReturnFirstFiveResults() {
 
-        AuthorSearchDto searchDto = new AuthorSearchDto();
-        searchDto.setPageable(PageRequest.of(0, PAGE_SIZE));
+        PageableDto pageableDto = new PageableDto();
+        pageableDto.setPageable(PageRequest.of(0, PAGE_SIZE));
 
         ResponseEntity<Page<AuthorDto>> response = restTemplate.exchange(LOCALHOST + port + SERVICE_PATH,
-                HttpMethod.POST, new HttpEntity<>(searchDto), responseTypePage);
+                HttpMethod.POST, new HttpEntity<>(pageableDto), responseTypePage);
 
         assertNotNull(response);
         assertEquals(TOTAL_AUTHORS, response.getBody().getTotalElements());
@@ -77,11 +77,11 @@ public class AuthorIT {
 
         int elementsCount = TOTAL_AUTHORS - PAGE_SIZE;
 
-        AuthorSearchDto searchDto = new AuthorSearchDto();
-        searchDto.setPageable(PageRequest.of(1, PAGE_SIZE));
+        PageableDto pageableDto = new PageableDto();
+        pageableDto.setPageable(PageRequest.of(1, PAGE_SIZE));
 
         ResponseEntity<Page<AuthorDto>> response = restTemplate.exchange(LOCALHOST + port + SERVICE_PATH,
-                HttpMethod.POST, new HttpEntity<>(searchDto), responseTypePage);
+                HttpMethod.POST, new HttpEntity<>(pageableDto), responseTypePage);
 
         assertNotNull(response);
         assertEquals(TOTAL_AUTHORS, response.getBody().getTotalElements());
@@ -100,11 +100,11 @@ public class AuthorIT {
 
         restTemplate.exchange(LOCALHOST + port + SERVICE_PATH, HttpMethod.PUT, new HttpEntity<>(dto), Void.class);
 
-        AuthorSearchDto searchDto = new AuthorSearchDto();
-        searchDto.setPageable(PageRequest.of(0, (int) newAuthorSize));
+        PageableDto pageableDto = new PageableDto();
+        pageableDto.setPageable(PageRequest.of(0, (int) newAuthorSize));
 
         ResponseEntity<Page<AuthorDto>> response = restTemplate.exchange(LOCALHOST + port + SERVICE_PATH,
-                HttpMethod.POST, new HttpEntity<>(searchDto), responseTypePage);
+                HttpMethod.POST, new HttpEntity<>(pageableDto), responseTypePage);
 
         assertNotNull(response);
         assertEquals(newAuthorSize, response.getBody().getTotalElements());
@@ -126,11 +126,11 @@ public class AuthorIT {
         restTemplate.exchange(LOCALHOST + port + SERVICE_PATH + MODIFY_AUTHOR_ID, HttpMethod.PUT, new HttpEntity<>(dto),
                 Void.class);
 
-        AuthorSearchDto searchDto = new AuthorSearchDto();
-        searchDto.setPageable(PageRequest.of(0, PAGE_SIZE));
+        PageableDto pageableDto = new PageableDto();
+        pageableDto.setPageable(PageRequest.of(0, PAGE_SIZE));
 
         ResponseEntity<Page<AuthorDto>> response = restTemplate.exchange(LOCALHOST + port + SERVICE_PATH,
-                HttpMethod.POST, new HttpEntity<>(searchDto), responseTypePage);
+                HttpMethod.POST, new HttpEntity<>(pageableDto), responseTypePage);
 
         assertNotNull(response);
         assertEquals(TOTAL_AUTHORS, response.getBody().getTotalElements());
@@ -164,11 +164,11 @@ public class AuthorIT {
 
         restTemplate.exchange(LOCALHOST + port + SERVICE_PATH + DELETE_AUTHOR_ID, HttpMethod.DELETE, null, Void.class);
 
-        AuthorSearchDto searchDto = new AuthorSearchDto();
-        searchDto.setPageable(PageRequest.of(0, TOTAL_AUTHORS));
+        PageableDto pageableDto = new PageableDto();
+        pageableDto.setPageable(PageRequest.of(0, TOTAL_AUTHORS));
 
         ResponseEntity<Page<AuthorDto>> response = restTemplate.exchange(LOCALHOST + port + SERVICE_PATH,
-                HttpMethod.POST, new HttpEntity<>(searchDto), responseTypePage);
+                HttpMethod.POST, new HttpEntity<>(pageableDto), responseTypePage);
 
         assertNotNull(response);
         assertEquals(newAuthorsSize, response.getBody().getTotalElements());

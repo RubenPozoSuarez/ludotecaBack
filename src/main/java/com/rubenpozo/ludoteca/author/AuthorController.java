@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rubenpozo.ludoteca.author.model.Author;
 import com.rubenpozo.ludoteca.author.model.AuthorDto;
-import com.rubenpozo.ludoteca.author.model.AuthorSearchDto;
 import com.rubenpozo.ludoteca.config.mapper.BeanMapper;
+import com.rubenpozo.ludoteca.dto.PageableDto;
 
 @RequestMapping(value = "/author")
 @RestController
@@ -28,10 +28,9 @@ public class AuthorController {
     BeanMapper beanMapper;
 
     @RequestMapping(path = "", method = RequestMethod.POST)
-    public Page<AuthorDto> findPage(@RequestBody AuthorSearchDto dto) {
+    public Page<AuthorDto> findPage(@RequestBody PageableDto dto) {
 
         return this.beanMapper.mapPage(this.authorService.findPage(dto), AuthorDto.class);
-
     }
 
     @RequestMapping(path = { "", "/{id}" }, method = RequestMethod.PUT)

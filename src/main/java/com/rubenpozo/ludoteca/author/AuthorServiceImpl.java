@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.rubenpozo.ludoteca.author.model.Author;
 import com.rubenpozo.ludoteca.author.model.AuthorDto;
-import com.rubenpozo.ludoteca.author.model.AuthorSearchDto;
+import com.rubenpozo.ludoteca.dto.PageableDto;
 
 @Service
 @Transactional
@@ -26,7 +26,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Page<Author> findPage(AuthorSearchDto dto) {
+    public Page<Author> findPage(PageableDto dto) {
         return this.authorRepository.findAll(dto.getPageable());
     }
 

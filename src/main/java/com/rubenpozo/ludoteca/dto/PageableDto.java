@@ -1,9 +1,8 @@
-package com.rubenpozo.ludoteca.author.model;
+package com.rubenpozo.ludoteca.dto;
 
 import org.springframework.data.domain.Pageable;
 
-public class AuthorSearchDto {
-
+public class PageableDto {
     private Pageable pageable;
 
     public Pageable getPageable() {

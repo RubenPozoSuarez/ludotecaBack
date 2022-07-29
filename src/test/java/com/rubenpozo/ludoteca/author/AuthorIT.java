@@ -172,7 +172,6 @@ public class AuthorIT {
 
         assertNotNull(response);
         assertEquals(newAuthorsSize, response.getBody().getTotalElements());
-
     }
 
     @Test

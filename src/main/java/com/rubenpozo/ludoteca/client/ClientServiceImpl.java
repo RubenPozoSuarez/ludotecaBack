@@ -27,7 +27,6 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void save(Long id, ClientDto dto) {
         Client client = new Client();
-        ;
 
         if (id != null)
             client = this.get(id);

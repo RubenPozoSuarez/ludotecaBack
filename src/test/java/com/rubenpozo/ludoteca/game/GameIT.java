@@ -75,7 +75,7 @@ public class GameIT {
     @Test
     public void findExistsTitleShouldReturnGames() {
 
-        int GAMES_WITH_FILTER = 1;
+        int gameWithFilter = 1;
 
         Map<String, Object> params = new HashMap<>();
         params.put(TITLE_PARAM, EXISTS_TITLE);
@@ -85,7 +85,7 @@ public class GameIT {
                 responseType, params);
 
         assertNotNull(response);
-        assertEquals(GAMES_WITH_FILTER, response.getBody().size());
+        assertEquals(gameWithFilter, response.getBody().size());
     }
 
     @Test
